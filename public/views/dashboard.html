@@ -1,0 +1,63 @@
+<section ng-init="rv.lo.getData()">
+
+    <!-- -->
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link active" href="#" ng-click="rv.co.openModal()">
+                <button type="button" class="btn btn-outline-primary"> <span class="ion-android-add-circle"></span> Create</button>
+            </a>
+        </li>
+    </ul>
+
+
+    <div class="row">
+        <div class="col-md-3" ng-repeat="data in rv.lo.data">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">{{data.title}}</h4>
+                    <p class="card-text">{{data.description}}</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="create-learning-point-modal">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <form name="createLearningPointForm" ng-submit="rv.co.submitAction(createLearningPointForm)" novalidate>
+    <div class="modal-header">
+    <h5 class="modal-title">Create</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div class="modal-body">
+
+    <div class="form-group">
+    <label>
+    Title
+    <span class="pull-right" data-ng-show="rv.co.isSubmited && createLearningPointForm.title.$error.required"> Required </span>
+    </label>
+    <input type="text" class="form-control" name="title" ng-model="rv.co.model.title"  ng-required="true">
+    </div>
+    <div class="form-group">
+    <label>
+    Description
+    <span class="pull-right" data-ng-show="rv.co.isSubmited && createLearningPointForm.description.$error.required"> Required </span>
+    </label>
+    <textarea class="form-control" rows="3" name="description" ng-model="rv.co.model.description"  ng-required="true"></textarea>
+    </div>
+
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn" ng-click="rv.co.closeModal()">cancel</button>
+    <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+    </form>
+    </div>
+    </div>
+    </div>
+
+
+</section>

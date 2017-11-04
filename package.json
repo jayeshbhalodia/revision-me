@@ -1,0 +1,25 @@
+{
+  "name": "revision-me",
+  "version": "1.0.0",
+  "description": "Revision me help to do learning points revision.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jayeshbhalodia/revision-me.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jayeshbhalodia/revision-me/issues"
+  },
+  "homepage": "https://github.com/jayeshbhalodia/revision-me#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "hbs": "^4.0.1",
+    "mongoose": "^4.13.0"
+  }
+}
