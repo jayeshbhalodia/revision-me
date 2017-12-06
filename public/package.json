@@ -10,9 +10,11 @@
   "license": "ISC",
   "dependencies": {
     "angular": "^1.6.6",
+    "angular-summernote": "^0.8.1",
     "angular-ui-router": "^0.4.3",
     "bootstrap": "^4.0.0-beta.2",
-    "jquery": "^3.0.0",
-    "popper.js": "^1.12.3"
+    "jquery": "3.0.0",
+    "popper.js": "^1.12.3",
+    "summernote": "^0.8.8"
   }
 }

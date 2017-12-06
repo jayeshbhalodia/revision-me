@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
-  <head>
-    <meta charset="utf-8">
-    <title>{{title}}</title>
+    <head>
+        <meta charset="utf-8">
+        <title>{{title}}</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/custom-libs/ionicons-master/css/ionicons.min.css">
+        <link rel="stylesheet" href="/node_modules/summernote/dist/summernote-bs4.css">
+        <link rel="stylesheet" href="/css/global.css">
+
+        <!-- Javascripts -->
+        <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="/node_modules/popper.js/dist/umd/popper.min.js"></script>
+        <script type="text/javascript" src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/node_modules/summernote/dist/summernote-bs4.min.js"></script>
 
 
+        <script type="text/javascript" src="/node_modules/angular/angular.min.js"></script>
+        <script type="text/javascript" src="/node_modules/angular-summernote/dist/angular-summernote.min.js"></script>
+        <script type="text/javascript" src="/node_modules/angular/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script type="text/javascript" src="/controller/main.js"></script>
+    </head>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/custom-libs/ionicons-master/css/ionicons.min.css">
-    <link rel="stylesheet" href="/css/style.css">
-
-
-    <!-- Javascripts -->
-    <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="/node_modules/popper.js/dist/umd/popper.min.js"></script>
-    <script type="text/javascript" src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/node_modules/angular/angular.min.js"></script>
-    <script type="text/javascript" src="/node_modules/angular/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script type="text/javascript" src="/controller/main.js"></script>
-
-  </head>
     <body>
-
-
 
         <div>
 
             <!-- HEADER -->
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="#">Navbar</a>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark revision-header">
+                <a class="navbar-brand" href="#"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -65,10 +65,9 @@
             </nav>
 
             <!-- body -->
-            <div ui-view class="page-container"></div>
+            <div >
+                <div ui-view class="page-container"></div>
+            </div>
         </div>
-
-
-
     </body>
 </html>

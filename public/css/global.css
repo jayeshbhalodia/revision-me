@@ -1,0 +1,50 @@
+.text-red {
+  color: red; }
+
+.mb-5 {
+  margin-bottom: 5px; }
+
+.mb-10 {
+  margin-bottom: 10px; }
+
+.mb-15 {
+  margin-bottom: 15px; }
+
+.mb-20 {
+  margin-bottom: 20px; }
+
+.mb-25 {
+  margin-bottom: 25px; }
+
+.mb-30 {
+  margin-bottom: 30px; }
+
+.page-container {
+  padding: 40px; }
+
+.revision-header .header-logo {
+  width: 150px;
+  height: 90px; }
+
+.card-data {
+  background-color: #363D42;
+  color: #ffffff; }
+  .card-data a {
+    color: #E4A731; }
+
+.common-btn {
+  color: #363D42;
+  background-color: transparent;
+  background-image: none;
+  border-color: #363D42; }
+
+.common-btn:hover {
+  color: #E4A731;
+  background-color: #363D42;
+  border-color: #363D42; }
+
+.common-btn:active {
+  color: #E4A731 !important;
+  background-color: #363D42 !important;
+  border-color: #363D42 !important;
+  box-shadow: none !important; }

@@ -1,3 +1,9 @@
 .page-container {
     padding:40px;
 }
+
+
+.revision-header .header-logo {
+	width: 150px;
+	height: 90px;
+}

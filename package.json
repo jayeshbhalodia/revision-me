@@ -18,8 +18,14 @@
   "homepage": "https://github.com/jayeshbhalodia/revision-me#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "date-utils": "^1.2.21",
     "express": "^4.16.2",
+    "gulp": "^3.9.1",
     "hbs": "^4.0.1",
     "mongoose": "^4.13.0"
+  },
+  "devDependencies": {
+    "gulp-nodemon": "^2.2.1",
+    "gulp-sass": "^3.1.0"
   }
 }
