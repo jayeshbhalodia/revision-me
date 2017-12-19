@@ -42,8 +42,8 @@ route.init(app);
 
 
 //
-app.listen(process.env.PORT || 3000, function () {
-  console.log('Ready');
+app.listen(3030, function () {
+  console.log('Ready port http://localhost:3030');
 });
 
 
