@@ -32,3 +32,32 @@
     border-color: #363D42 !important;
     box-shadow: none !important;
 }
+
+
+#update-learning-point-modal {
+    tags-input .tags {
+        box-shadow: none;
+        border: none;
+        border-radius: none; 
+
+        .tag-list {
+            padding-left: 0px;
+            .tag-item {
+                padding: 3px 5px;
+                margin: 3px 3px;
+                display: inline-block;
+                color: #fff;
+                background: #428bca;
+                border: 1px solid #357ebd;
+                border-radius: 4px;
+                list-style-type: none;
+            }
+        }
+
+        input {
+            width: 72px;
+            border: none;
+            outline: none;
+        }
+    }
+}

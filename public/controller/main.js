@@ -1,7 +1,7 @@
 'use strict';
 
 //
-var myApp = angular.module('myApp', ['ui.router', 'summernote']);
+var myApp = angular.module('myApp', ['ui.router', 'summernote', 'ngTagsInput']);
 
 
 //
