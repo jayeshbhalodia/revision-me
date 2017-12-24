@@ -216,6 +216,58 @@ myApp.controller('RevisionController', ['$scope', '$http', function($scope, $htt
 
 
 
+
+    // -------------------------------------------------------------------------
+    // Add Code section
+    // -------------------------------------------------------------------------
+
+    $scope.rv.uo.code = {
+        isSecotion: false,
+    };
+
+
+    $scope.rv.uo.code.codeKey = [];
+
+
+
+    /**
+     *
+     */
+    $scope.rv.uo.code.openModal = function() {
+
+        //
+        $scope.rv.uo.code.isSecotion = true;
+        
+        //
+        $scope.rv.uo.code.codeKey.push({
+            title: $scope.rv.uo.code.codeKey.codeTitle,
+            code: $scope.rv.uo.code.codeKey.codeDescription
+        });
+    }
+
+
+
+    /**
+     *
+     */
+    $scope.rv.uo.code.closeModal = function() {
+        $scope.rv.uo.code.isSecotion = false;
+    }
+
+
+
+
+    /**
+     *
+     */
+    $scope.rv.uo.code.submit = function() {
+        $scope.rv.uo.code.isSecotion = false;
+    }
+
+
+
+
+
     // -------------------------------------------------------------------------
     // Delete section
     // -------------------------------------------------------------------------
