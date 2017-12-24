@@ -13,7 +13,8 @@ var learningPoints = new Schema({
     }],
     reminderType: Number,
   	reminders: [{ type: Schema.Types.ObjectId, ref: 'reminders' }],
-	timestamp: Number,
+    timestamp: Number,
+	tags: Array,
 });
 
 

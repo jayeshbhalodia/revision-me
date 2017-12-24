@@ -118,6 +118,9 @@
                             </label>
                             <summernote ng-model="rv.uo.model.description"></summernote>
                         </div>
+                        <tags-input ng-model="rv.uo.model.tags">
+                            <auto-complete source="loadTags($query)"></auto-complete>
+                        </tags-input>
 
                         <hr>
 
@@ -146,7 +149,6 @@
                             </div>
 
                         </div>
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn pointer" ng-click="rv.uo.closeModal()">cancel</button>

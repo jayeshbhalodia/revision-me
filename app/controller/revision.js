@@ -74,6 +74,7 @@ exports.getData = function(req, res) {
 
 //
 exports.update = function(req, res) {
+
     var learningPointsModel = mongoose.model('learning_points');
 
     learningPointsModel.update({
@@ -81,7 +82,8 @@ exports.update = function(req, res) {
     }, {
 
         title: req.body.title,
-        description: req.body.description
+        description: req.body.description,
+        tags: req.body.tags
 
     }).exec(function(err, result) {
         if (err) {
