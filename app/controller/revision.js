@@ -21,7 +21,11 @@ exports.create = function(req, res) {
 
     //
     req.body._id = new mongoose.Types.ObjectId();
+    
+    //
+    req.body.timestamp = new Date().getTime();
 
+    //
     var learningPointForm = new learningPointsModel(req.body);
 
     //
