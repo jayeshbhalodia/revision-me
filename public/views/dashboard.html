@@ -121,10 +121,38 @@
                         <tags-input ng-model="rv.uo.model.tags">
                             <auto-complete source="loadTags($query)"></auto-complete>
                         </tags-input>
+
+                        <hr>
+
+                        <div class="form-group text-right">
+                            <label>
+                                <button type="button" class="btn btn-primary common-btn pointer" ng-click="rv.uo.code.openModal()"><span class="ion-plus-circled"></span>
+                                    <i class="fa fa-plus-square" aria-hidden="true"></i> Add Code
+                                </button>
+                            </label>
+                        </div>
+
+                        <div ng-if="rv.uo.code.isSecotion">
+
+                            <div class="form-group" ng-repeat="codeRow in rv.uo.code.codeKey">
+                                <label>
+                                    Code Title <span class="pull-right" data-ng-show="rv.uo.isSubmited && updateLearningPointForm.title.$error.required"> Required </span>
+                                </label>
+                                <input type="text" class="form-control" name="title" ng-model="codeRow.codeTitle"  ng-required="true">
+                            </div>
+
+                            <div class="form-group">
+                                <label>
+                                    Code <span class="pull-right" data-ng-show="rv.uo.isSubmited && updateLearningPointForm.codeKey.$error.required"> Required </span>
+                                </label>
+                                <summernote ng-model="codeRow.codeDescription"></summernote>
+                            </div>
+
+                        </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn" ng-click="rv.uo.closeModal()">cancel</button>
-                        <button type="submit" class="btn btn-primary common-btn"><span class="ion-edit"></span> Update</button>
+                        <button type="button" class="btn pointer" ng-click="rv.uo.closeModal()">cancel</button>
+                        <button type="submit" class="btn btn-primary common-btn pointer"><span class="ion-edit"></span> Update</button>
                     </div>
                 </form>
             </div>
