@@ -1,6 +1,9 @@
 .text-red {
   color: red; }
 
+.text-blue {
+  color: #007bff; }
+
 .pointer {
   cursor: pointer; }
 

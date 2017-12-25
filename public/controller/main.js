@@ -101,6 +101,7 @@ myApp.controller('RevisionController', ['$scope', '$http', function($scope, $htt
      *
      */
     $scope.rv.co.openModal = function() {
+        $scope.rv.co.model.reminderType = '1';
         $("#create-learning-point-modal").modal('show');
     }
 

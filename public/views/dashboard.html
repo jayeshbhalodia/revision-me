@@ -37,7 +37,7 @@
 
 
     <div class="row">
-        <div class="col-md-3 mb-30 lp-box" ng-repeat="data in rv.lo.data | orderBy : '-timestamp'">
+        <div class="col-md-3 mb-30 lp-box" ng-repeat="data in rv.lo.data | orderBy : 'timestamp'">
             <div class="card card-data">
                 <div class="card-body">
                     <span class="card-id">
@@ -47,8 +47,9 @@
                         {{data.title}}                       
                     </h4>
                     <div class="hover-actions">
-                        <a href="#" class="float-right ml-2" ng-click="rv.edit.openModal(data)"> <span class="ion-ios-gear"></span></a>
-                        <a href="#" class="delete-icon float-right" ng-click="rv.do.deleteAction(data)"><span class="ion-trash-b"></span></a>
+                        <a class="float-right ml-2" ng-click="rv.edit.openModal(data)"> <span class="text-blue ion-ios-gear"></span></a>
+                        <a class="pointer float-right" ng-show="!data.isDeleteShow" ng-click="data.isDeleteShow=true"><span class=" text-blue ion-trash-b"></span></a>
+                        <a class="pointer float-right text-red" ng-show="data.isDeleteShow" ng-click="rv.do.deleteAction(data)"><span class="text-red delete-icon ion-trash-b"></span></a>
                     </div>
                 </div>
             </div>
