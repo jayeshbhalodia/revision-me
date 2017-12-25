@@ -36,16 +36,16 @@ exports.create = function(req, res) {
             learningPoint: data._id,
             status: 1,
             setupDate: new Date().getTime(),
+            reminderType: req.body.reminderType,
             revisionDate: service.getReminderTime(req.body.reminderType)
         });
 
         reminderForm.save(function(err, reminderData) {
-
             res.json({
                 status: true,
                 data: data
             });
-        })
+        });
     })
 };
 
@@ -61,6 +61,10 @@ exports.getData = function(req, res) {
 
     //
     service.getTodayRevisionTasks(function(todayRevisions) {
+        
+        //
+        console.log('todayRevisions>>', todayRevisions);
+        
         learningPointsModel.find({}).exec(function(err, data) {
             res.json({
                 learningPoints: data,
@@ -122,6 +126,8 @@ exports.remove =  function(req, res) {
 
 //
 exports.reminderUpdte =  function(req, res) {
+    
+    //
     var learningPointsModel = mongoose.model('learning_points');
     var reminderModel = mongoose.model('reminders');
 
@@ -130,18 +136,14 @@ exports.reminderUpdte =  function(req, res) {
     }, {
         status: 2 
     }).exec(function(err, result) {
-        if (err) {
-            res.json({
-                status: false
-            });
-            return;
-        }
-
+        
+        //
         var reminderForm = new reminderModel({
             _id: new mongoose.Types.ObjectId(),
             learningPoint: req.body.learningPoint._id,
             status: 1,
             setupDate: new Date().getTime(),
+            reminderType: req.body.reminderType,
             revisionDate: service.getReminderTime(req.body.learningPoint.reminderType)
         });
 

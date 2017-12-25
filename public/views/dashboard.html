@@ -1,25 +1,31 @@
 <section ng-init="rv.lo.getData()" class="dashboard-cn">
-
-    <!-- -->
-    <h2 ng-show="rv.lo.todayRevisions.length">Today Revision Points</h2>
-    <!-- {{rv.lo.todayRevisions}} -->
-    <hr ng-show="rv.lo.todayRevisions.length">
-    <div class="row">
-        <div class="col-md-3 mb-30" ng-repeat="revision in rv.lo.todayRevisions">
-            <div class="card card-data">
-                <div class="card-body">
-                    <h4 class="card-title">{{revision.learningPoint.title}}</h4>
-                    <select class="form-control mb-30" name="responseType" id="responseType" data-ng-model="rv.co.reminderType">
-                        <option ng-repeat="type in rv.co.responseType" value="{{type.key}}">{{type.tital}}</option>
-                    </select>
-                    <a href="#" class="btn btn-outline-warning" ng-click="rv.rm.done(revision)"> <span class="ion-android-done"></span> Revision Done</a>
+    
+    <div class="" ng-show="rv.lo.todayRevisions.length">
+        
+        <!-- -->
+        <h2>Today Revision Points</h2>
+        
+        <hr>
+        
+        <div class="row">
+            <div class="col-md-3 mb-30" ng-repeat="revision in rv.lo.todayRevisions">
+                <div class="card card-data">
+                    <div class="card-body">
+                        <h6 class="card-title">{{revision.learningPoint.title}}</h6>
+                        <select class="form-control mb-10" name="responseType" id="responseType" data-ng-model="revision.reminderType">
+                            <option ng-repeat="type in rv.co.responseType" value="{{type.key}}">{{type.tital}}</option>
+                        </select>
+                        <button class="btn btn-outline-primary common-btn float-right pointer" ng-click="rv.rm.done(revision)"> 
+                            <span class="ion-android-done"></span> 
+                            Revision Done
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </div>        
     </div>
-
-    <!-- <h1>0982308230840</h1> -->
-
+    
+    
 
     <h2>
         Learning Points
@@ -31,7 +37,7 @@
 
 
     <div class="row">
-        <div class="col-md-3 mb-30 lp-box pointer" ng-repeat="data in rv.lo.data | orderBy : '-timestamp'">
+        <div class="col-md-3 mb-30 lp-box" ng-repeat="data in rv.lo.data | orderBy : 'timestamp'">
             <div class="card card-data">
                 <div class="card-body">
                     <span class="card-id">
@@ -41,8 +47,9 @@
                         {{data.title}}                       
                     </h4>
                     <div class="hover-actions">
-                        <a href="#" class="float-right ml-2" ng-click="rv.edit.openModal(data)"> <span class="ion-ios-gear"></span></a>
-                        <a href="#" class="delete-icon float-right" ng-click="rv.do.deleteAction(data)"><span class="ion-trash-b"></span></a>
+                        <a class="float-right ml-2" ng-click="rv.edit.openModal(data)"> <span class="text-blue ion-ios-gear"></span></a>
+                        <a class="pointer float-right" ng-show="!data.isDeleteShow" ng-click="data.isDeleteShow=true"><span class=" text-blue ion-trash-b"></span></a>
+                        <a class="pointer float-right text-red" ng-show="data.isDeleteShow" ng-click="rv.do.deleteAction(data)"><span class="text-red delete-icon ion-trash-b"></span></a>
                     </div>
                 </div>
             </div>
@@ -74,7 +81,7 @@
                                 Description
                                 <span class="text-red" data-ng-show="rv.co.isSubmited && createLearningPointForm.description.$error.required"> Required </span>
                             </label>
-                            <summernote ng-model="rv.co.model.description" name="description" ng-required="true"></summernote>
+                            <summernote ng-model="rv.co.model.description" name="description"></summernote>
                         </div>
                         <div class="form-group">
                             <label for="responseType">Reminder</label>
@@ -85,7 +92,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn" ng-click="rv.co.closeModal()">cancel</button>
-                        <button type="submit" class="btn btn-primary common-btn"><span class="ion-android-add-circle"></span> Create</button>
+                        <button type="submit" class="btn btn-outline-primary common-btn float-right pointer"><span class="ion-android-add-circle"></span> Create</button>
                     </div>
                 </form>
             </div>
@@ -155,7 +162,7 @@
                         
                         <div class="form-group text-right">
                             <label>
-                                <button type="button" class="btn btn-primary common-btn pointer" ng-click="rv.edit.addCode()"><span class="ion-plus-circled"></span>
+                                <button type="button" class="btn btn-outline-primary common-btn float-right pointer pointer" ng-click="rv.edit.addCode()"><span class="ion-plus-circled"></span>
                                     <i class="fa fa-plus-square" aria-hidden="true"></i> Add Code
                                 </button>
                             </label>
@@ -164,7 +171,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn pointer" ng-click="rv.edit.closeModal()">cancel</button>
-                        <button type="submit" class="btn btn-primary common-btn pointer"><span class="ion-edit"></span> Update</button>
+                        <button type="submit" class="btn btn-outline-primary common-btn float-right pointer pointer"><span class="ion-edit"></span> Update</button>
                     </div>
                 </form>
             </div>
