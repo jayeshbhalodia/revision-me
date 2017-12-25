@@ -106,7 +106,9 @@ exports.getTodayRevisionTasks = function(callback) {
     //
     reminderModel.find({
         status: 1,
-        revisionDate: todayTimeStamp.getTime()
+        revisionDate: {
+            $lte: todayTimeStamp.getTime()
+        }
     })
     .populate('learningPoint')
     .exec(function(e, data) {

@@ -301,17 +301,16 @@ myApp.controller('RevisionController', ['$scope', '$http', function($scope, $htt
      */
     $scope.rv.rm.done = function(data) {
 
-        console.log('data', data);
          //
         $http.post('/api/v1/reminder/' + data._id + '/update', data).then(function(response) {
 
             $scope.rv.lo.getData();
 
-            // for (var data in $scope.rv.lo.data) {
-            //     if ($scope.rv.lo.data[data]._id == $scope.rv.edit.model._id) {
-            //         $scope.rv.lo.data[data] = $scope.rv.edit.model;
-            //     }
-            // }
+            for (var data in $scope.rv.lo.data) {
+                if ($scope.rv.lo.data[data]._id == $scope.rv.edit.model._id) {
+                    $scope.rv.lo.data[data] = $scope.rv.edit.model;
+                }
+            }
         });
 
     }

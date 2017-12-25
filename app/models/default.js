@@ -24,7 +24,11 @@ var reminder = new Schema({
     },
     status: Number,
     setupDate: Number,
-    revisionDate: Number
+    revisionDate: Number,
+	reminderType: {
+		type: String,
+		default: '1'
+	}
 });
 
 
