@@ -1,7 +1,7 @@
 'use strict';
 
 //
-var myApp = angular.module('myApp', ['ui.router', 'summernote', 'ngTagsInput']);
+var myApp = angular.module('myApp', ['ui.router', 'summernote', 'ngTagsInput', 'ui.ace']);
 
 
 //
@@ -160,7 +160,7 @@ myApp.controller('RevisionController', ['$scope', '$http', function($scope, $htt
     // Update section
     // -------------------------------------------------------------------------
 
-    $scope.rv.uo = {
+    $scope.rv.edit = {
         isSubmited: false,
         model: {}
     };
@@ -169,8 +169,8 @@ myApp.controller('RevisionController', ['$scope', '$http', function($scope, $htt
     /**
      *
      */
-    $scope.rv.uo.openModal = function(data) {
-        $scope.rv.uo.model = data;
+    $scope.rv.edit.openModal = function(data) {
+        $scope.rv.edit.model = data;
         $("#update-learning-point-modal").modal('show');
     }
 
@@ -178,9 +178,9 @@ myApp.controller('RevisionController', ['$scope', '$http', function($scope, $htt
     /**
      *
      */
-    $scope.rv.uo.closeModal = function() {
-        $scope.rv.uo.model = {};
-        $scope.rv.uo.isSubmited = false;
+    $scope.rv.edit.closeModal = function() {
+        $scope.rv.edit.model = {};
+        $scope.rv.edit.isSubmited = false;
         $("#update-learning-point-modal").modal('hide');
     }
 
@@ -188,28 +188,28 @@ myApp.controller('RevisionController', ['$scope', '$http', function($scope, $htt
     /**
      *
      */
-    $scope.rv.uo.updateAction = function(from) {
+    $scope.rv.edit.updateAction = function(from) {
 
         //
         if (from.$invalid) {
-            $scope.rv.uo.isSubmited = true;
+            $scope.rv.edit.isSubmited = true;
             return;
         }
 
-        console.log('$scope.rv.uo.model', $scope.rv.uo.model);
+        console.log('$scope.rv.edit.model', $scope.rv.edit.model);
 
         //
-        $http.post('/api/v1/learning-points/' + $scope.rv.uo.model._id + '/update', $scope.rv.uo.model).then(function(response) {
+        $http.post('/api/v1/learning-points/' + $scope.rv.edit.model._id + '/update', $scope.rv.edit.model).then(function(response) {
 
             console.log('response', response);
 
             for (var data in $scope.rv.lo.data) {
-                if ($scope.rv.lo.data[data]._id == $scope.rv.uo.model._id) {
-                    $scope.rv.lo.data[data] = $scope.rv.uo.model;
+                if ($scope.rv.lo.data[data]._id == $scope.rv.edit.model._id) {
+                    $scope.rv.lo.data[data] = $scope.rv.edit.model;
                 }
             }
 
-            $scope.rv.uo.closeModal();
+            $scope.rv.edit.closeModal();
         });
 
     }
@@ -221,27 +221,27 @@ myApp.controller('RevisionController', ['$scope', '$http', function($scope, $htt
     // Add Code section
     // -------------------------------------------------------------------------
 
-    $scope.rv.uo.code = {
+    $scope.rv.edit.code = {
         isSecotion: false,
     };
 
-
-    $scope.rv.uo.code.codeKey = [];
 
 
 
     /**
      *
      */
-    $scope.rv.uo.code.openModal = function() {
-
-        //
-        $scope.rv.uo.code.isSecotion = true;
+    $scope.rv.edit.addCode = function() {
         
         //
-        $scope.rv.uo.code.codeKey.push({
-            title: $scope.rv.uo.code.codeKey.codeTitle,
-            code: $scope.rv.uo.code.codeKey.codeDescription
+        if(!$scope.rv.edit.model.codes) {
+            $scope.rv.edit.model.codes = [];
+        }        
+            
+        //
+        $scope.rv.edit.model.codes.push({
+            title:'',
+            code: ''
         });
     }
 
@@ -250,8 +250,8 @@ myApp.controller('RevisionController', ['$scope', '$http', function($scope, $htt
     /**
      *
      */
-    $scope.rv.uo.code.closeModal = function() {
-        $scope.rv.uo.code.isSecotion = false;
+    $scope.rv.edit.removeCode = function(index) {
+        $scope.rv.edit.model.codes.splice(index, 1);
     }
 
 
@@ -260,8 +260,8 @@ myApp.controller('RevisionController', ['$scope', '$http', function($scope, $htt
     /**
      *
      */
-    $scope.rv.uo.code.submit = function() {
-        $scope.rv.uo.code.isSecotion = false;
+    $scope.rv.edit.code.submit = function() {
+        $scope.rv.edit.code.isSecotion = false;
     }
 
 
@@ -278,7 +278,7 @@ myApp.controller('RevisionController', ['$scope', '$http', function($scope, $htt
      */
     $scope.rv.do.deleteAction = function(data) {
 
-        console.log('$scope.rv.uo.model', data);
+        console.log('$scope.rv.edit.model', data);
 
         for (var r in $scope.rv.lo.data) {
             if ($scope.rv.lo.data[r]._id == data._id) {
@@ -308,8 +308,8 @@ myApp.controller('RevisionController', ['$scope', '$http', function($scope, $htt
             $scope.rv.lo.getData();
 
             // for (var data in $scope.rv.lo.data) {
-            //     if ($scope.rv.lo.data[data]._id == $scope.rv.uo.model._id) {
-            //         $scope.rv.lo.data[data] = $scope.rv.uo.model;
+            //     if ($scope.rv.lo.data[data]._id == $scope.rv.edit.model._id) {
+            //         $scope.rv.lo.data[data] = $scope.rv.edit.model;
             //     }
             // }
         });

@@ -1,9 +1,8 @@
-<section ng-init="rv.lo.getData()">
+<section ng-init="rv.lo.getData()" class="dashboard-cn">
 
     <!-- -->
-
-
-    <!-- <h1 ng-show="rv.lo.todayRevisions.length">Today Revision Points</h1>
+    <h2 ng-show="rv.lo.todayRevisions.length">Today Revision Points</h2>
+    <!-- {{rv.lo.todayRevisions}} -->
     <hr ng-show="rv.lo.todayRevisions.length">
     <div class="row">
         <div class="col-md-3 mb-30" ng-repeat="revision in rv.lo.todayRevisions">
@@ -17,28 +16,32 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
+
+    <!-- <h1>0982308230840</h1> -->
 
 
-
-    <h1>
+    <h2>
         Learning Points
         <button ng-click="rv.co.openModal()" type="button" class="btn btn-outline-primary common-btn float-right"> <span class="ion-android-add-circle"></span> Create</button>
-    </h1>
+    </h2>
     <hr>
 
 
 
 
     <div class="row">
-        <div class="col-md-3 mb-30" ng-repeat="data in rv.lo.data | orderBy : '-timestamp'">
+        <div class="col-md-3 mb-30 lp-box" ng-repeat="data in rv.lo.data | orderBy : '-timestamp'">
             <div class="card card-data">
                 <div class="card-body">
+                    <span class="card-id">
+                        #{{$index+1}}
+                    </span>
                     <h4 class="card-title">
-                        #{{$index+1}} - {{data.title}}                       
+                        {{data.title}}                       
                     </h4>
-                    <div class="">
-                        <a href="#" class="float-right ml-2" ng-click="rv.uo.openModal(data)"> <span class="ion-ios-gear"></span></a>
+                    <div class="hover-actions">
+                        <a href="#" class="float-right ml-2" ng-click="rv.edit.openModal(data)"> <span class="ion-ios-gear"></span></a>
                         <a href="#" class="delete-icon float-right" ng-click="rv.do.deleteAction(data)"><span class="ion-trash-b"></span></a>
                     </div>
                 </div>
@@ -95,7 +98,7 @@
     <div class="modal" tabindex="-1" role="dialog" id="update-learning-point-modal">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <form name="updateLearningPointForm" ng-submit="rv.uo.updateAction(updateLearningPointForm)" novalidate>
+                <form name="updateLearningPointForm" ng-submit="rv.edit.updateAction(updateLearningPointForm)" novalidate>
                     <div class="modal-header">
                         <h5 class="modal-title">Update</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -107,51 +110,60 @@
                         <div class="form-group">
                             <label>
                                 Title
-                                <span class="pull-right" data-ng-show="rv.uo.isSubmited && updateLearningPointForm.title.$error.required"> Required </span>
+                                <span class="pull-right" data-ng-show="rv.edit.isSubmited && updateLearningPointForm.title.$error.required"> Required </span>
                             </label>
-                            <input type="text" class="form-control" name="title" ng-model="rv.uo.model.title"  ng-required="true">
+                            <input type="text" class="form-control" name="title" ng-model="rv.edit.model.title"  ng-required="true">
                         </div>
                         <div class="form-group">
                             <label>
                                 Description
-                                <span class="pull-right" data-ng-show="rv.uo.isSubmited && updateLearningPointForm.description.$error.required"> Required </span>
+                                <span class="pull-right" data-ng-show="rv.edit.isSubmited && updateLearningPointForm.description.$error.required"> Required </span>
                             </label>
-                            <summernote ng-model="rv.uo.model.description"></summernote>
+                            <summernote ng-model="rv.edit.model.description"></summernote>
                         </div>
-                        <tags-input ng-model="rv.uo.model.tags">
+                        <tags-input ng-model="rv.edit.model.tags">
                             <auto-complete source="loadTags($query)"></auto-complete>
                         </tags-input>
 
                         <hr>
 
+
+                        <div>
+                            <div class="" ng-repeat="codeRow in rv.edit.model.codes">
+                                <div class="form-group" >
+                                    <label>
+                                        Code Title <span class="pull-right" data-ng-show="rv.edit.isSubmited && updateLearningPointForm.title.$error.required"> Required </span>
+                                        
+                                    </label>
+                                    <span  class="delete-icon  pointer float-right" ng-click="rv.edit.removeCode($index)"><span class="ion-trash-b"></span></a>
+                                    </span>
+                                    <input type="text" class="form-control" name="title" ng-model="codeRow.title"  ng-required="true">
+                                </div>
+                                <div class="form-group">
+                                    <label>
+                                        Code <span class="pull-right" data-ng-show="rv.edit.isSubmited && updateLearningPointForm.codeKey.$error.required"> Required </span>
+                                    </label>
+                                    <div ui-ace="{
+                                      useWrapMode : true,
+                                      theme:'monokai',
+                                      mode: 'html'
+                                  }" ng-model="codeRow.code"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
                         <div class="form-group text-right">
                             <label>
-                                <button type="button" class="btn btn-primary common-btn pointer" ng-click="rv.uo.code.openModal()"><span class="ion-plus-circled"></span>
+                                <button type="button" class="btn btn-primary common-btn pointer" ng-click="rv.edit.addCode()"><span class="ion-plus-circled"></span>
                                     <i class="fa fa-plus-square" aria-hidden="true"></i> Add Code
                                 </button>
                             </label>
                         </div>
-
-                        <div ng-if="rv.uo.code.isSecotion">
-
-                            <div class="form-group" ng-repeat="codeRow in rv.uo.code.codeKey">
-                                <label>
-                                    Code Title <span class="pull-right" data-ng-show="rv.uo.isSubmited && updateLearningPointForm.title.$error.required"> Required </span>
-                                </label>
-                                <input type="text" class="form-control" name="title" ng-model="codeRow.codeTitle"  ng-required="true">
-                            </div>
-
-                            <div class="form-group">
-                                <label>
-                                    Code <span class="pull-right" data-ng-show="rv.uo.isSubmited && updateLearningPointForm.codeKey.$error.required"> Required </span>
-                                </label>
-                                <summernote ng-model="codeRow.codeDescription"></summernote>
-                            </div>
-
-                        </div>
+                        
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn pointer" ng-click="rv.uo.closeModal()">cancel</button>
+                        <button type="button" class="btn pointer" ng-click="rv.edit.closeModal()">cancel</button>
                         <button type="submit" class="btn btn-primary common-btn pointer"><span class="ion-edit"></span> Update</button>
                     </div>
                 </form>

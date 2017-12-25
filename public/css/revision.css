@@ -6,27 +6,11 @@
   height: 90px; }
 
 .card-data {
-  background-color: #363D42;
-  color: #ffffff; }
+  background-color: #f7f7f9;
+  min-height: 120px;
+  overflow: auto; }
   .card-data a {
-    color: #E4A731; }
-
-.common-btn {
-  color: #363D42;
-  background-color: transparent;
-  background-image: none;
-  border-color: #363D42; }
-
-.common-btn:hover {
-  color: #E4A731;
-  background-color: #363D42;
-  border-color: #363D42; }
-
-.common-btn:active {
-  color: #E4A731 !important;
-  background-color: #363D42 !important;
-  border-color: #363D42 !important;
-  box-shadow: none !important; }
+    color: #007bff; }
 
 #update-learning-point-modal tags-input .tags {
   box-shadow: none;
@@ -47,3 +31,30 @@
     width: 72px;
     border: none;
     outline: none; }
+
+.dashboard-cn .card-body {
+  padding: 25px 10px 10px 10px; }
+
+.dashboard-cn .lp-box .card-title {
+  font-weight: normal;
+  font-size: 18px; }
+
+.dashboard-cn .lp-box .card-id {
+  position: absolute;
+  top: 0px;
+  left: 10px; }
+
+.dashboard-cn .lp-box .hover-actions {
+  display: none;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  padding: 5px; }
+
+.dashboard-cn .lp-box:hover .hover-actions {
+  display: block; }
+
+.dashboard-cn #lp-editor {
+  position: absolute;
+  width: 500px;
+  height: 400px; }

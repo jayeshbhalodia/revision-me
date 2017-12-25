@@ -83,7 +83,8 @@ exports.update = function(req, res) {
 
         title: req.body.title,
         description: req.body.description,
-        tags: req.body.tags
+        tags: req.body.tags,
+        codes: req.body.codes
 
     }).exec(function(err, result) {
         if (err) {

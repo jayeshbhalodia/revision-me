@@ -7,31 +7,33 @@
 }
 
 .card-data {
-	background-color: #363D42;
-	color: #ffffff;
+	background-color: #f7f7f9;
+	min-height: 120px;
+	overflow: auto;
+	// color: #ffffff;
 	a{
-		color: #E4A731;
+		color: #007bff;
 	}
 }
 
-.common-btn {
-	color: #363D42;
-    background-color: transparent;
-    background-image: none;
-    border-color: #363D42;
-}
+// .common-btn {
+// 	color: #363D42;
+//     background-color: transparent;
+//     background-image: none;
+//     border-color: #363D42;
+// }
 
-.common-btn:hover {
-    color: #E4A731;
-    background-color: #363D42;
-    border-color: #363D42;
-}
-.common-btn:active {
-    color: #E4A731 !important;
-    background-color: #363D42 !important;
-    border-color: #363D42 !important;
-    box-shadow: none !important;
-}
+// .common-btn:hover {
+//     color: #E4A731;
+//     background-color: #363D42;
+//     border-color: #363D42;
+// }
+// .common-btn:active {
+//     color: #E4A731 !important;
+//     background-color: #363D42 !important;
+//     border-color: #363D42 !important;
+//     box-shadow: none !important;
+// }
 
 
 #update-learning-point-modal {
@@ -60,4 +62,51 @@
             outline: none;
         }
     }
+}
+
+
+
+
+
+
+.dashboard-cn {
+	.card-body {
+		padding:25px 10px 10px 10px; 
+	}
+	.lp-box {
+		.card-title {
+			font-weight: normal;
+			font-size: 18px;
+		}
+		.card-id {
+			position: absolute;
+			top: 0px;
+			left: 10px;
+		}
+		.hover-actions {
+			display: none;
+			position: absolute;
+			right: 0px;
+			top: 0px;
+			padding: 5px;
+		}
+		&:hover {
+			.hover-actions {
+				display: block;
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
+	// LP Edit
+	#lp-editor {
+	    position: absolute;
+	    width: 500px;
+	    height: 400px;
+	}
+
 }

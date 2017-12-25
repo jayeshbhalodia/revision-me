@@ -7,10 +7,7 @@ var learningPoints = new Schema({
 	_id: Schema.Types.ObjectId,
     title:  String,
     description: String,
-    codeKey: [{
-        title: String,
-        code: String,
-    }],
+    codes: [],
     reminderType: Number,
   	reminders: [{ type: Schema.Types.ObjectId, ref: 'reminders' }],
     timestamp: Number,
