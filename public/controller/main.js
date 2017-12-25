@@ -41,7 +41,7 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
 });
 
 
-myApp.controller('RevisionController', ['$scope', '$http', function($scope, $http) {
+myApp.controller('RevisionController', ['$scope', '$http', '$sce', function($scope, $http, $sce) {
 
     $scope.rv = {};
 
@@ -201,14 +201,14 @@ myApp.controller('RevisionController', ['$scope', '$http', function($scope, $htt
         //
         $http.post('/api/v1/learning-points/' + $scope.rv.edit.model._id + '/update', $scope.rv.edit.model).then(function(response) {
 
-            console.log('response', response);
-
+            //
             for (var data in $scope.rv.lo.data) {
                 if ($scope.rv.lo.data[data]._id == $scope.rv.edit.model._id) {
                     $scope.rv.lo.data[data] = $scope.rv.edit.model;
                 }
             }
 
+            //
             $scope.rv.edit.closeModal();
         });
 
@@ -266,12 +266,38 @@ myApp.controller('RevisionController', ['$scope', '$http', function($scope, $htt
 
 
 
+    // -------------------------------------------------------------------------
+    // Preview Code section
+    // -------------------------------------------------------------------------
+
+    $scope.rv.edit.preCode = {
+        data: ''
+    };
+
+
+
+
+    /**
+     *
+     */
+    $scope.rv.edit.preCode.openModal = function(data) {
+        
+        //
+        $scope.rv.edit.preCode.data = angular.copy(data);
+        $scope.rv.edit.preCode.data.html = $sce.trustAsHtml($scope.rv.edit.preCode.data.description);
+        $("#preview-learning-point-modal").modal('show');
+    }
+
+
 
 
     // -------------------------------------------------------------------------
     // Delete section
     // -------------------------------------------------------------------------
+
     $scope.rv.do = {};
+
+
 
     /**
      *
@@ -291,9 +317,11 @@ myApp.controller('RevisionController', ['$scope', '$http', function($scope, $htt
     }
 
 
+
     // -------------------------------------------------------------------------
     // reminder section
     // -------------------------------------------------------------------------
+
     $scope.rv.rm = {};
 
     /**

@@ -31,13 +31,13 @@
 
 
     <div class="row">
-        <div class="col-md-3 mb-30 lp-box" ng-repeat="data in rv.lo.data | orderBy : '-timestamp'">
+        <div class="col-md-3 mb-30 lp-box pointer" ng-repeat="data in rv.lo.data | orderBy : '-timestamp'">
             <div class="card card-data">
                 <div class="card-body">
                     <span class="card-id">
                         #{{$index+1}}
                     </span>
-                    <h4 class="card-title">
+                    <h4 class="card-title" ng-click="rv.edit.preCode.openModal(data)">
                         {{data.title}}                       
                     </h4>
                     <div class="hover-actions">
@@ -171,6 +171,54 @@
         </div>
     </div>
 
+
+    
+
+    <!-- Preview Model -->
+    <div class="modal" tabindex="-1" role="dialog" id="preview-learning-point-modal">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">{{rv.edit.preCode.data.title}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <div>
+                            <p ng-bind-html="rv.edit.preCode.data.html"></p>
+                        </div>
+                    </div>
+                    <div>
+                        <div ng-repeat="cRow in rv.edit.preCode.data.codes">
+                            <hr>
+                            <div class="form-group">
+                                <div>
+                                    <label>{{cRow.title}}</label>
+                                </div>
+                                <div ui-ace="{
+                                      useWrapMode : true,
+                                      theme:'monokai',
+                                      mode: 'html'
+                                  }" ng-model="cRow.code" ng-readonly="true"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group" ng-if="rv.edit.preCode.data.tags.length">
+                        <div>
+                            <label> Tags </label>
+                        </div>
+                        <span ng-repeat="preTags in rv.edit.preCode.data.tags" class="badge badge-primary mr-10">{{preTags.text}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <div class="modal" tabindex="-1" role="dialog" id="delete-learning-point-modal">
