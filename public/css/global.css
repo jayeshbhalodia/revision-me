@@ -70,7 +70,8 @@
 
 .dashboard-cn .lp-box .card-title {
   font-weight: normal;
-  font-size: 18px; }
+  font-size: 18px;
+  cursor: pointer; }
 
 .dashboard-cn .lp-box .card-id {
   position: absolute;

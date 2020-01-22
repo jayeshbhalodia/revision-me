@@ -46,6 +46,9 @@
                     <h4 class="card-title" ng-click="rv.edit.preCode.openModal(data)">
                         {{data.title}}                       
                     </h4>
+                    <div ng-if="data.description">
+                        <div data-ng-bind-html="data.descriptionD"></div>
+                    </div>
                     <div class="hover-actions">
                         <a class="float-right ml-2" ng-click="rv.edit.openModal(data)"> <span class="text-blue ion-ios-gear"></span></a>
                         <a class="pointer float-right" ng-show="!data.isDeleteShow" ng-click="data.isDeleteShow=true"><span class=" text-blue ion-trash-b"></span></a>
@@ -196,7 +199,7 @@
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <div>
+                        <div ng-if="rv.edit.preCode.data.html">
                             <p ng-bind-html="rv.edit.preCode.data.html"></p>
                         </div>
                     </div>

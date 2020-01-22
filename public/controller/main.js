@@ -150,6 +150,12 @@ myApp.controller('RevisionController', ['$scope', '$http', '$sce', function($sco
      */
     $scope.rv.lo.getData = function() {
         $http.post('/api/v1/learning-points/get', {}).then(function(response) {
+            
+            if(response.data.learningPoints && response.data.learningPoints.length) {
+                for(var r in response.data.learningPoints) {
+                    response.data.learningPoints[r].descriptionD = $sce.trustAsHtml(response.data.learningPoints[r].description);
+                }
+            }
             $scope.rv.lo.data = response.data.learningPoints;
             $scope.rv.lo.todayRevisions = response.data.todayRevisions;
         });
@@ -282,10 +288,10 @@ myApp.controller('RevisionController', ['$scope', '$http', '$sce', function($sco
      *
      */
     $scope.rv.edit.preCode.openModal = function(data) {
-        
-        //
         $scope.rv.edit.preCode.data = angular.copy(data);
-        $scope.rv.edit.preCode.data.html = $sce.trustAsHtml($scope.rv.edit.preCode.data.description);
+        if($scope.rv.edit.preCode.data.description) {
+            $scope.rv.edit.preCode.data.html = $sce.trustAsHtml($scope.rv.edit.preCode.data.description || '');    
+        }
         $("#preview-learning-point-modal").modal('show');
     }
 
